@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Card({name,profile,occupation,status,dob,id}) {
+function Card({name,profile,occupation,status,dob}) {
     return (
-        <div class="box" key={id}>
+        <div class="box">
         <img class="main-img" src={profile} alt="character"/>
         <div class="box-content">
             <div class="item">{name}</div>

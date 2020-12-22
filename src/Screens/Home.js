@@ -31,7 +31,6 @@ function Home() {
         const data=newData.splice((pageNumber*10-Start),10)
         setSplicedData(data)
       }
-    
     return (
         <div>
           <br/><br/><br/><br/><br/>
@@ -44,7 +43,7 @@ function Home() {
                     SplicedData.map(items=>{
                         return(
                             <Card
-                            id={items.char_id} 
+                            key={items.char_id}
                             name={items.name}
                             profile={items.img}
                             occupation={items.occupation}
