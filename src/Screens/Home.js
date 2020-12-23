@@ -4,6 +4,7 @@ import Card from '../components/Card'
 import Pagination from '../components/Pagination'
 import Profile from '../components/Profile'
 import Header from '../components/Header'
+import Loader from '../components/Loader'
 const Base_URL='https://www.breakingbadapi.com/api'
 function Home() {
     const [activePage,setactivePage]=useState(1)    //To Store active page number
@@ -12,6 +13,7 @@ function Home() {
     const [Start,setStart]=useState(0)               //Start index of page
     const [Open,setOpen]=useState(false)
     const [ProfileData,setProfileData]=useState({})
+    const [Loading,setLoading]=useState(true)
     // Function to get the list of all characters from api
     useEffect(()=>{
 
@@ -22,6 +24,7 @@ function Home() {
             const newData=res.data.splice(0,10)
             setSplicedData(newData)
             setStart(10)
+            setLoading(false)
         })
         .catch(err=>console.log(err))
     },[])
@@ -47,6 +50,7 @@ function Home() {
           setOpen(false)
       }
     return (
+        Loading?<Loader/>:
         <div>
           
           <Header open={openModal}/>
