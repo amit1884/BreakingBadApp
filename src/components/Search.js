@@ -2,12 +2,11 @@ import React,{useState} from 'react'
 import axios from 'axios'
 const Base_URL='https://www.breakingbadapi.com/api'
 function Search({open}) {
-    const [Text,setText]=useState('')
-    const [Loading,setLoading]=useState(false)
-    const SubmitHandler=(e)=>{
+    const [Text,setText]=useState('')               //Search Query Text
+    const [Loading,setLoading]=useState(false)     //Status of Loading 
+    const SubmitHandler=(e)=>{ 
         e.preventDefault();
         setLoading(true)
-        console.log('chala.....................')
         axios.get(`${Base_URL}/characters?name=${Text}`)
         .then(res=>{
             console.log(res.data)

@@ -11,9 +11,11 @@ function Home() {
     const [Data,setData]=useState([])                //To store fetched data
     const [SplicedData,setSplicedData]=useState([])  //To store spliced data
     const [Start,setStart]=useState(0)               //Start index of page
-    const [Open,setOpen]=useState(false)
-    const [ProfileData,setProfileData]=useState({})
-    const [Loading,setLoading]=useState(true)
+    const [Open,setOpen]=useState(false)              //Open and Close the modal
+    const [ProfileData,setProfileData]=useState({})       //Single Character profile Data
+    const [Loading,setLoading]=useState(true)       //Main Loading Status
+
+
     // Function to get the list of all characters from api
     useEffect(()=>{
 
@@ -45,6 +47,7 @@ function Home() {
         setProfileData(data)
         setOpen(true)
       }
+    //   Close Modal
       function closeModal(){
           console.log('clicked')
           setOpen(false)

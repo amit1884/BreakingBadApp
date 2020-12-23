@@ -2,8 +2,9 @@ import React ,{useState,useEffect}from 'react'
 import axios from 'axios'
 const Base_URL='https://www.breakingbadapi.com/api'
 function Profile({profileData,closeModal}) {
-    const [Quote,setQuote]=useState('')
+    const [Quote,setQuote]=useState('')    //Store the quote of the character based on chararter Id
     const Id=profileData.char_id;
+    // Fetching the quote of the character
     useEffect(()=>{
         axios.get(`${Base_URL}/quotes/${Id}`)
         .then(res=>{
