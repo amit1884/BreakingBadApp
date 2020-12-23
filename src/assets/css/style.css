@@ -4,19 +4,32 @@
     overflow-x: hidden;
 }
 body{
-    background-image: url('../images/back.jpg');
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: linear-gradient(to bottom, #101a80, #0059bb, #0092df, #00c9f0, #30fff7);
 }
 .header_container{
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 10;
+  width:100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    padding:15px 20px;
+    background-image: linear-gradient(to bottom, #c5c3f1, #d3d0f4, #e0ddf8, #eceafb, #f9f8ff);
 }
-.logo{
-    widows: 200px;
-    height:150px;
+.input_field{
+  padding:10px;
+  border:none;
+  outline:none;
+}
+.search_btn{
+  padding:10px;
+  border:none;
+  outline:none;
+  text-align: center;
+  background-color: #0059bb;
+  color:#fff;
+  cursor: pointer;
 }
 
 .list_conatiner{
@@ -219,7 +232,7 @@ body{
     background-image: linear-gradient(to right, #76cbff, #6dbeff, #77afff, #909cff, #b084ff);
       position: relative;
       width:80%;
-      height:700px;
+      min-height:700px;
       background-color: #fff;
       border-radius: 20px;
       box-shadow: 1px 2px 10px lightgray;
@@ -297,6 +310,7 @@ body{
     overflow:hidden;
     flex-wrap: wrap;
     justify-content: center;
+    height: auto;
 }
   .image_area{
     width:100%;

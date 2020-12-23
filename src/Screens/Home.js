@@ -3,6 +3,7 @@ import axios from 'axios'
 import Card from '../components/Card'
 import Pagination from '../components/Pagination'
 import Profile from '../components/Profile'
+import Header from '../components/Header'
 const Base_URL='https://www.breakingbadapi.com/api'
 function Home() {
     const [activePage,setactivePage]=useState(1)    //To Store active page number
@@ -47,7 +48,9 @@ function Home() {
       }
     return (
         <div>
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          
+          <Header open={openModal}/>
+          <br/><br/><br/><br/>
             <div className="list_conatiner">
                 {
                     SplicedData.map(items=>{

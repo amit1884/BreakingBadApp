@@ -3,15 +3,15 @@ import axios from 'axios'
 const Base_URL='https://www.breakingbadapi.com/api'
 function Profile({profileData,closeModal}) {
     const [Quote,setQuote]=useState('')
+    const Id=profileData.char_id;
     useEffect(()=>{
-
-        axios.get(`${Base_URL}/quotes/${profileData.char_id}`)
+        axios.get(`${Base_URL}/quotes/${Id}`)
         .then(res=>{
             console.log(res.data)
             setQuote(res.data[0].quote)
         })
         .catch(err=>console.log(err))
-    },[])
+    },[Id])
     return (
         <div className="profile_outer_container">
             <div className="inner_container">
