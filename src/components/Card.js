@@ -8,6 +8,7 @@ function Card({name,profile,occupation,status,dob}) {
             <div class="item">{name}</div>
             <div class="description show-animate">
                 <p>{dob}</p>
+                
                 {
                     occupation.map(item=>{
                         return(

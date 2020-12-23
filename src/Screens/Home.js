@@ -5,10 +5,12 @@ import Pagination from '../components/Pagination'
 import Profile from '../components/Profile'
 const Base_URL='https://www.breakingbadapi.com/api'
 function Home() {
-    const [activePage,setactivePage]=useState(1)
-    const [Data,setData]=useState([])
-    const [SplicedData,setSplicedData]=useState([])
-    const [Start,setStart]=useState(0)
+    const [activePage,setactivePage]=useState(1)    //To Store active page number
+    const [Data,setData]=useState([])                //To store fetched data
+    const [SplicedData,setSplicedData]=useState([])  //To store spliced data
+    const [Start,setStart]=useState(0)               //Start index of page
+    const [Open,setOpen]=useState(false)
+    const [ProfileData,setProfileData]=useState({})
     // Function to get the list of all characters from api
     useEffect(()=>{
 
@@ -22,6 +24,7 @@ function Home() {
         })
         .catch(err=>console.log(err))
     },[])
+
 // Function to handle pagination
     const handlePageChange = (pageNumber) =>{
         console.log(`active page is ${pageNumber}`);
@@ -31,17 +34,25 @@ function Home() {
         const data=newData.splice((pageNumber*10-Start),10)
         setSplicedData(data)
       }
+
+    //   Open Modal
+      const openModal=(data)=>{
+        console.log('profile',data)
+        setProfileData(data)
+        setOpen(true)
+      }
+      function closeModal(){
+          console.log('clicked')
+          setOpen(false)
+      }
     return (
         <div>
-          <br/><br/><br/><br/><br/>
-            <Pagination
-                handlePageChange={handlePageChange}
-                activePage={activePage}
-            />
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/>
             <div className="list_conatiner">
                 {
                     SplicedData.map(items=>{
                         return(
+                            <div onClick={()=>openModal(items)}>
                             <Card
                             key={items.char_id}
                             name={items.name}
@@ -50,15 +61,20 @@ function Home() {
                             status={items.status}
                             dob={items.birthday}
                             />
+                            </div>
                         )
                     })
                 }
             </div>
+            {/* Pagination Section */}
             <Pagination
                 handlePageChange={handlePageChange}
                 activePage={activePage}
             />
-            <Profile/>
+            {/* Profile Modal */}
+            {Open?<Profile 
+            closeModal={closeModal}
+            profileData={ProfileData}/>:null}
         </div>
     )
 }
